@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PushdownAutomation", "src\PushdownAutomata\PushdownAutomation.csproj", "{64F35A17-A16C-48F0-8416-F8741DD84D12}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Automata", "Automata", "{2C0C0E13-0D8D-4DB1-83E0-637421463FA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{38D22D40-5151-4AC8-B3A7-514FF4F6074E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PushdownAutomation.Tests", "test\PushdownAutomata.Tests\PushdownAutomation.Tests.csproj", "{EB10E7F6-3686-4B2F-BFBA-B75F036A9D8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{64F35A17-A16C-48F0-8416-F8741DD84D12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64F35A17-A16C-48F0-8416-F8741DD84D12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64F35A17-A16C-48F0-8416-F8741DD84D12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64F35A17-A16C-48F0-8416-F8741DD84D12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB10E7F6-3686-4B2F-BFBA-B75F036A9D8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB10E7F6-3686-4B2F-BFBA-B75F036A9D8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB10E7F6-3686-4B2F-BFBA-B75F036A9D8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB10E7F6-3686-4B2F-BFBA-B75F036A9D8E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{64F35A17-A16C-48F0-8416-F8741DD84D12} = {2C0C0E13-0D8D-4DB1-83E0-637421463FA5}
+		{EB10E7F6-3686-4B2F-BFBA-B75F036A9D8E} = {38D22D40-5151-4AC8-B3A7-514FF4F6074E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6AA65CFB-DDB1-4530-B6B8-739E621EB4F0}
+	EndGlobalSection
+EndGlobal
