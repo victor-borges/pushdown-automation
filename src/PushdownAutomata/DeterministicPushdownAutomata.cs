@@ -61,7 +61,7 @@ namespace PushdownAutomation
 
                 if (count > 1)
                 {
-                    throw new NotSupportedException("Was provided more than 1 possible path for this state.");
+                    throw new NotSupportedException();
                 }
 
                 if (count == 0)

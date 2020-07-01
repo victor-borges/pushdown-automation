@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System.Collections.Generic;
+using DPDA = PushdownAutomation.DeterministicPushdownAutomata;
 
 namespace PushdownAutomation.Tests
 {
@@ -46,7 +47,7 @@ namespace PushdownAutomation.Tests
                     new TransitionRule(3, 'c', null, null, 1)
                 };
 
-            var automata = new DeterministicPushdownAutomata(inputAlphabet, stackAlphabet, states, initialState, transitionRules, BaseSymbol);
+            var automata = new DPDA(inputAlphabet, stackAlphabet, states, initialState, transitionRules, BaseSymbol);
             
             return automata.Matches(input);
         }
@@ -86,7 +87,7 @@ namespace PushdownAutomation.Tests
                     new TransitionRule(1, 'b', 'A', null, 1)
                 };
 
-            var automata = new DeterministicPushdownAutomata(inputAlphabet, stackAlphabet, states, initialState, transitionRules, BaseSymbol);
+            var automata = new DPDA(inputAlphabet, stackAlphabet, states, initialState, transitionRules, BaseSymbol);
 
             return automata.Matches(input);
         }
