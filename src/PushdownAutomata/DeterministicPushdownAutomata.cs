@@ -34,13 +34,13 @@ namespace PushdownAutomation
         {
             input = string.IsNullOrEmpty(input) ? null : input;
 
-            int i = 0;
+            var i = 0;
 
             while (!(_stack.Count == 0 && i == (input?.Length ?? 0)))
             {
                 var inputSymbol = i < (input?.Length ?? 0) ? input?[i++] : null;
 
-                if (!_inputAlphabet?.Contains(inputSymbol) ?? true)
+                if ((!_inputAlphabet?.Contains(inputSymbol) ?? true) && i != (input?.Length ?? 0))
                 {
                     return false;
                 }
@@ -63,15 +63,13 @@ namespace PushdownAutomation
                 {
                     throw new NotSupportedException();
                 }
-
-                if (count == 0)
+                else if (count == 0)
                 {
                     return false;
                 }
-
-                if (count == 1)
+                else if (count == 1)
                 {
-                    var transition = possibleTransitions.First();
+                    var transition = possibleTransitions.Single();
 
                     if (!_states.Contains(transition.ToState))
                     {
@@ -101,6 +99,10 @@ namespace PushdownAutomation
                             _stack.Push(symbol);
                         }
                     }
+                }
+                else
+                {
+                    return false;
                 }
             }
 
