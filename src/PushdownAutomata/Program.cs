@@ -89,11 +89,11 @@ namespace PushdownAutomation
 
                     if (encodedInput?.Length > 25)
                     {
-                        Console.Write($"{encodedInput.Take(25),-30}... ");
+                        Console.Write($"{string.Join("", encodedInput.Take(25).ToArray()) + "...",-30}");
                     }
                     else
                     {
-                        Console.Write($"{encodedInput,-30} ");
+                        Console.Write($"{encodedInput,-30}");
                     }
 
                     if (automata.Matches(input))
