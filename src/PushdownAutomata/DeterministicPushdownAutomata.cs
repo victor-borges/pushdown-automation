@@ -9,7 +9,7 @@ namespace PushdownAutomation
         private readonly ISet<char?>? _inputAlphabet;
         private readonly ISet<char?>? _stackAlphabet;
         private readonly ISet<int> _states;
-        private readonly ISet<TransitionRule>? _transitionRules;
+        private readonly ISet<TransitionRule?>? _transitionRules;
         private readonly Stack<char?> _stack;
 
         private int _currentState;
@@ -19,7 +19,7 @@ namespace PushdownAutomation
             ISet<char?>? stackAlphabet,
             ISet<int> states,
             int initialState,
-            ISet<TransitionRule>? transitionRules,
+            ISet<TransitionRule?>? transitionRules,
             char? initialStackSymbol)
         {
             _inputAlphabet = inputAlphabet;

@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/victor-borges/pushdown-automation/master/docs/schema.json",
+
+  "pushdown_automata": {
+    "name": "{ aⁿbⁿ | n >= 0}",
+    "description": "Matches the following language: { aⁿbⁿ | n >= 0}",
+    "input_alphabet": [
+      null,
+      "a",
+      "b"
+    ],
+    "stack_alphabet": [
+      "A",
+      "β"
+    ],
+    "states": [
+      0,
+      1
+    ],
+    "initial_state": 0,
+    "initial_stack_symbol": "β",
+    "transition_rules": [
+      {
+        "from_state": 0,
+        "to_state": 0,
+        "input": "a",
+        "stack": "β",
+        "replace": "A"
+      },
+      {
+        "from_state": 0,
+        "to_state": 0,
+        "input": null,
+        "stack": "β",
+        "replace": null
+      },
+      {
+        "from_state": 0,
+        "to_state": 0,
+        "input": "a",
+        "stack": "A",
+        "replace": "AA"
+      },
+      {
+        "from_state": 0,
+        "to_state": 1,
+        "input": "b",
+        "stack": "A",
+        "replace": null
+      },
+      {
+        "from_state": 1,
+        "to_state": 1,
+        "input": "b",
+        "stack": "A",
+        "replace": null
+      }
+    ]
+  },
+  "input": [
+    null,
+    "",
+    " ",
+    "\n",
+    "ab",
+    "aabb",
+    "aaabbb",
+    "a",
+    "b",
+    "aab",
+    "abb",
+    "ba",
+    "baba",
+    "bbb",
+    "aaa",
+    "qwerty"
+  ]
+}

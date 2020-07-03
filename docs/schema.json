@@ -1,0 +1,219 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "description": "Comprises the pushdown automata and the input to run on it.",
+    "default": {},
+    "required": [
+        "pushdown_automata",
+        "input"
+    ],
+    "additionalProperties": true,
+    "properties": {
+        "pushdown_automata": {
+            "$id": "#/properties/pushdown_automata",
+            "type": "object",
+            "description": "The properties of the pushdown automata, namely input alphabet, stack alphabet, states, initial state, initial stack symbol and transition rules.",
+            "default": {},
+            "required": [
+                "name",
+                "description",
+                "input_alphabet",
+                "stack_alphabet",
+                "states",
+                "initial_state",
+                "initial_stack_symbol",
+                "transition_rules"
+            ],
+            "additionalProperties": true,
+            "properties": {
+                "name": {
+                    "$id": "#/properties/pushdown_automata/properties/name",
+                    "type": "string",
+                    "description": "The friendly name of the automata."
+                },
+                "description": {
+                    "$id": "#/properties/pushdown_automata/properties/description",
+                    "type": "string",
+                    "description": "A detailed description of the automata."
+                },
+                "input_alphabet": {
+                    "$id": "#/properties/pushdown_automata/properties/input_alphabet",
+                    "type": "array",
+                    "description": "Alphabet of the input, must contain unique items, can contain null and strings of one character.",
+                    "default": [],
+                    "examples": [
+                        [
+                            null,
+                            "a"
+                        ]
+                    ],
+                    "additionalItems": true,
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$id": "#/properties/pushdown_automata/properties/input_alphabet/items/anyOf/0",
+                                "type": "null",
+                                "description": "The λ symbol.",
+                                "default": null
+                            },
+                            {
+                                "$id": "#/properties/pushdown_automata/properties/input_alphabet/items/anyOf/1",
+                                "type": "string",
+                                "description": "Must be a string of one character (length of 1).",
+                                "default": "",
+                                "maxLength": 1,
+                                "minLength": 1
+                            }
+                        ],
+                        "$id": "#/properties/pushdown_automata/properties/input_alphabet/items"
+                    },
+                    "uniqueItems": true
+                },
+                "stack_alphabet": {
+                    "$id": "#/properties/pushdown_automata/properties/stack_alphabet",
+                    "type": "array",
+                    "description": "A set of symbols that the automata will use on the stack. Must contain unique items. Must contain the initial stack symbol as well. Must contain strings of one character (length of 1).",
+                    "default": [],
+                    "additionalItems": true,
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$id": "#/properties/pushdown_automata/properties/stack_alphabet/items/anyOf/0",
+                                "type": "string",
+                                "description": "Must be a string of one character (length of 1). Can not be an input symbol.",
+                                "default": "",
+                                "maxLength": 1,
+                                "minLength": 1
+                            }
+                        ],
+                        "$id": "#/properties/pushdown_automata/properties/stack_alphabet/items"
+                    },
+                    "uniqueItems": true
+                },
+                "states": {
+                    "$id": "#/properties/pushdown_automata/properties/states",
+                    "type": "array",
+                    "description": "The states of the automata. Must contain the initial state as well. Must contain unique states. States are integers.",
+                    "default": [],
+                    "additionalItems": true,
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$id": "#/properties/pushdown_automata/properties/states/items/anyOf/0",
+                                "type": "integer",
+                                "description": "A possible state for the automata.",
+                                "default": 0
+                            }
+                        ],
+                        "$id": "#/properties/pushdown_automata/properties/states/items"
+                    },
+                    "uniqueItems": true
+                },
+                "initial_state": {
+                    "$id": "#/properties/pushdown_automata/properties/initial_state",
+                    "type": "integer",
+                    "description": "The initial state of the automata. Must exist in the set of states.",
+                    "default": 0
+                },
+                "initial_stack_symbol": {
+                    "$id": "#/properties/pushdown_automata/properties/initial_stack_symbol",
+                    "type": "string",
+                    "description": "The initial symbol on the stack. Must exist in the stack alphabet.",
+                    "default": "β",
+                    "maxLength": 1,
+                    "minLength": 1
+                },
+                "transition_rules": {
+                    "$id": "#/properties/pushdown_automata/properties/transition_rules",
+                    "type": "array",
+                    "description": "The transition rules of the automata. Must contain unique items.",
+                    "default": [],
+                    "additionalItems": true,
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$id": "#/properties/pushdown_automata/properties/transition_rules/items/anyOf/0",
+                                "type": "object",
+                                "description": "A transition rule, comprised of the current state of the automata, the next state of the automata, the symbol to read from the input, the symbol to read and the symbols to replace from the stack.",
+                                "default": {},
+                                "required": [
+                                    "from_state",
+                                    "to_state",
+                                    "input",
+                                    "stack",
+                                    "replace"
+                                ],
+                                "additionalProperties": true,
+                                "properties": {
+                                    "from_state": {
+                                        "$id": "#/properties/pushdown_automata/properties/transition_rules/items/anyOf/0/properties/from_state",
+                                        "type": "integer",
+                                        "description": "The state that this rule applies to.",
+                                        "default": 0
+                                    },
+                                    "to_state": {
+                                        "$id": "#/properties/pushdown_automata/properties/transition_rules/items/anyOf/0/properties/to_state",
+                                        "type": "integer",
+                                        "description": "The state that the automata will transition to, when this rule is applied.",
+                                        "default": 0
+                                    },
+                                    "input": {
+                                        "$id": "#/properties/pushdown_automata/properties/transition_rules/items/anyOf/0/properties/input",
+                                        "type": ["string", "null"],
+                                        "description": "The symbol that needs to be read from the input for this rule to apply. Must be a string of one character (length of 1).",
+                                        "default": "",
+                                        "maxLength": 1,
+                                        "minLength": 1
+                                    },
+                                    "stack": {
+                                        "$id": "#/properties/pushdown_automata/properties/transition_rules/items/anyOf/0/properties/stack",
+                                        "type": ["string", "null"],
+                                        "description": "The symbol that needs to be on top of the stack for this rule to apply. Must be a string of one character (length of 1).",
+                                        "default": "",
+                                        "maxLength": 1,
+                                        "minLength": 1
+                                    },
+                                    "replace": {
+                                        "$id": "#/properties/pushdown_automata/properties/transition_rules/items/anyOf/0/properties/replace",
+                                        "type": ["string", "null"],
+                                        "description": "The symbols that will be pushed to the stack when this rule is applied. Can be null. Must not be an empty string.",
+                                        "default": "",
+                                        "minLength": 0
+                                    }
+                                }
+                            }
+                        ],
+                        "$id": "#/properties/pushdown_automata/properties/transition_rules/items"
+                    },
+                    "uniqueItems": true
+                }
+            }
+        },
+        "input": {
+            "$id": "#/properties/input",
+            "type": "array",
+            "description": "The words to run the automata. An array of strings, or null. Must contain unique items.",
+            "default": [],
+            "additionalItems": true,
+            "items": {
+                "anyOf": [
+                    {
+                        "$id": "#/properties/input/items/anyOf/0",
+                        "type": "null",
+                        "description": "An empty word.",
+                        "default": null
+                    },
+                    {
+                        "$id": "#/properties/input/items/anyOf/1",
+                        "type": "string",
+                        "description": "An input to run the automata.",
+                        "default": ""
+                    }
+                ],
+                "$id": "#/properties/input/items"
+            },
+            "uniqueItems": true
+        }
+    }
+}

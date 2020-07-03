@@ -1,20 +1,22 @@
-﻿namespace PushdownAutomation
+﻿using System.Text.Json.Serialization;
+
+namespace PushdownAutomation
 {
     public class TransitionRule
     {
-        public int State { get; }
-        public char? InputSymbol { get; }
-        public char? StackSymbol { get; }
-        public string? ReplaceSymbols { get; }
-        public int ToState { get; }
+        [JsonPropertyName("from_state")]
+        public int State { get; set; }
 
-        public TransitionRule(int state, char? inputSymbol, char? stackSymbol, string? replaceSymbols, int toState)
-        {
-            State = state;
-            InputSymbol = inputSymbol;
-            StackSymbol = stackSymbol;
-            ReplaceSymbols = replaceSymbols;
-            ToState = toState;
-        }
+        [JsonPropertyName("input")]
+        public char? InputSymbol { get; set; }
+
+        [JsonPropertyName("stack")]
+        public char? StackSymbol { get; set; }
+
+        [JsonPropertyName("replace")]
+        public string? ReplaceSymbols { get; set; }
+
+        [JsonPropertyName("to_state")]
+        public int ToState { get; set; }
     }
 }

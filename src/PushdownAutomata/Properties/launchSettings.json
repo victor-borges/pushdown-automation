@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PushdownAutomation": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Users\\Red\\OneDrive\\Área de Trabalho\\automata.json\""
+    }
+  }
+}

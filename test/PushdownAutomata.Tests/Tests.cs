@@ -38,17 +38,17 @@ namespace PushdownAutomation.Tests
 
             var transitionRules = new HashSet<TransitionRule>
                 {
-                    new TransitionRule(0, 'a', BaseSymbol, "A", 2),
-                    new TransitionRule(0, 'c', BaseSymbol, null, 1),
-                    new TransitionRule(2, 'a', 'A', "N", 2),
-                    new TransitionRule(2, 'a', 'N', "NA", 2),
-                    new TransitionRule(2, 'b', 'N', null, 3),
-                    new TransitionRule(3, 'b', 'N', null, 3),
-                    new TransitionRule(3, 'c', null, null, 1)
+                    new TransitionRule{ State = 0, InputSymbol = 'a', StackSymbol = BaseSymbol, ReplaceSymbols = "A", ToState = 2 },
+                    new TransitionRule{ State = 0, InputSymbol = 'c', StackSymbol = BaseSymbol, ReplaceSymbols = null, ToState = 1 },
+                    new TransitionRule{ State = 2, InputSymbol = 'a', StackSymbol = 'A', ReplaceSymbols = "N", ToState = 2 },
+                    new TransitionRule{ State = 2, InputSymbol = 'a', StackSymbol = 'N', ReplaceSymbols = "NA", ToState = 2 },
+                    new TransitionRule{ State = 2, InputSymbol = 'b', StackSymbol = 'N', ReplaceSymbols = null, ToState = 3 },
+                    new TransitionRule{ State = 3, InputSymbol = 'b', StackSymbol = 'N', ReplaceSymbols = null, ToState = 3 },
+                    new TransitionRule{ State = 3, InputSymbol = 'c', StackSymbol = null, ReplaceSymbols =  null, ToState = 1 }
                 };
 
             var automata = new DPDA(inputAlphabet, stackAlphabet, states, initialState, transitionRules, BaseSymbol);
-            
+
             return automata.Matches(input);
         }
 
@@ -80,11 +80,13 @@ namespace PushdownAutomation.Tests
 
             var transitionRules = new HashSet<TransitionRule>
                 {
-                    new TransitionRule(0, 'a', BaseSymbol, "A", 0),
-                    new TransitionRule(0, null, BaseSymbol, null, 0),
-                    new TransitionRule(0, 'a', 'A', "AA", 0),
-                    new TransitionRule(0, 'b', 'A', null, 1),
-                    new TransitionRule(1, 'b', 'A', null, 1)
+                    new TransitionRule{ State = 0, InputSymbol = 'a', StackSymbol = BaseSymbol, ReplaceSymbols = "A", ToState = 0 },
+                    new TransitionRule{ State = 0, InputSymbol = null, StackSymbol = BaseSymbol,
+                        ReplaceSymbols = null, ToState = 0 },
+                    new TransitionRule{ State = 0, InputSymbol = 'a', StackSymbol = 'A', ReplaceSymbols = "AA", ToState = 0 },
+                    new TransitionRule{ State = 0, InputSymbol = 'b', StackSymbol = 'A', ReplaceSymbols = null, ToState = 1},
+                    new TransitionRule{ State = 1, InputSymbol = 'b', StackSymbol = 'A', ReplaceSymbols = null,
+                        ToState = 1 }
                 };
 
             var automata = new DPDA(inputAlphabet, stackAlphabet, states, initialState, transitionRules, BaseSymbol);
@@ -129,13 +131,13 @@ namespace PushdownAutomation.Tests
 
             var transitionRules = new HashSet<TransitionRule>
                 {
-                    new TransitionRule(0, 'a', BaseSymbol, BaseSymbol + "A", 0),
-                    new TransitionRule(0, 'e', BaseSymbol, BaseSymbol + "E", 0),
-                    new TransitionRule(0, null, BaseSymbol, null, 0),
-                    new TransitionRule(0, 'a', 'A', "AA", 0),
-                    new TransitionRule(0, 'e', 'A', null, 0),
-                    new TransitionRule(0, 'a', 'E', null, 0),
-                    new TransitionRule(0, 'e', 'E', "EE", 0)
+                    new TransitionRule { State = 0, InputSymbol = 'a', StackSymbol = BaseSymbol, ReplaceSymbols = BaseSymbol + "A", ToState = 0 },
+                    new TransitionRule { State = 0, InputSymbol = 'e', StackSymbol = BaseSymbol, ReplaceSymbols = BaseSymbol + "E", ToState = 0 },
+                    new TransitionRule { State = 0, InputSymbol = null, StackSymbol = BaseSymbol, ReplaceSymbols = null, ToState = 0 },
+                    new TransitionRule { State = 0, InputSymbol = 'a', StackSymbol = 'A', ReplaceSymbols = "AA", ToState = 0 },
+                    new TransitionRule { State = 0, InputSymbol = 'e', StackSymbol = 'A', ReplaceSymbols = null, ToState = 0 },
+                    new TransitionRule { State = 0, InputSymbol = 'a', StackSymbol = 'E', ReplaceSymbols = null, ToState = 0 },
+                    new TransitionRule { State = 0, InputSymbol = 'e', StackSymbol = 'E', ReplaceSymbols = "EE", ToState = 0 }
                 };
 
             var automata = new DPDA(inputAlphabet, stackAlphabet, states, initialState, transitionRules, BaseSymbol);
@@ -173,15 +175,29 @@ namespace PushdownAutomation.Tests
 
             var transitionRules = new HashSet<TransitionRule>
                 {
-                    new TransitionRule(0, 'a', BaseSymbol, "A", 0),
-                    new TransitionRule(0, 'a', 'A', "AA", 0),
-                    new TransitionRule(0, 'b', BaseSymbol, $"{BaseSymbol}", 1),
-                    new TransitionRule(0, 'b', 'A', "A", 1),
-                    new TransitionRule(1, null, BaseSymbol, null, 1),
-                    new TransitionRule(1, 'b', BaseSymbol, $"{BaseSymbol}", 1),
-                    new TransitionRule(1, 'b', 'A', "A", 1),
-                    new TransitionRule(1, 'a', 'A', null, 2),
-                    new TransitionRule(2, 'a', 'A', null, 2),
+                    new TransitionRule { State = 0, InputSymbol = 'a', StackSymbol = BaseSymbol, ReplaceSymbols = "A", ToState = 0 },
+                    new TransitionRule { State = 0, InputSymbol = 'a', StackSymbol = 'A', ReplaceSymbols = "AA", ToState = 0 },
+                    new TransitionRule { State = 0, InputSymbol = 'b', StackSymbol = BaseSymbol,
+                        ReplaceSymbols = $"{BaseSymbol}",
+                        ToState = 1 },
+                    new TransitionRule { State = 0, InputSymbol = 'b', StackSymbol = 'A',
+                        ReplaceSymbols = "A",
+                        ToState = 1 },
+                    new TransitionRule { State = 1, InputSymbol = null, StackSymbol = BaseSymbol,
+                        ReplaceSymbols = null,
+                        ToState = 1 },
+                    new TransitionRule { State = 1, InputSymbol = 'b', StackSymbol = BaseSymbol,
+                        ReplaceSymbols = $"{BaseSymbol}",
+                        ToState = 1 },
+                    new TransitionRule { State = 1, InputSymbol = 'b', StackSymbol = 'A',
+                        ReplaceSymbols = "A",
+                        ToState = 1 },
+                    new TransitionRule { State = 1, InputSymbol = 'a', StackSymbol = 'A',
+                        ReplaceSymbols = null,
+                        ToState = 2 },
+                    new TransitionRule { State = 2, InputSymbol = 'a', StackSymbol = 'A',
+                        ReplaceSymbols = null,
+                        ToState = 2 },
                 };
 
             var automata = new DPDA(inputAlphabet, stackAlphabet, states, initialState, transitionRules, BaseSymbol);
@@ -217,11 +233,19 @@ namespace PushdownAutomation.Tests
 
             var transitionRules = new HashSet<TransitionRule>
                 {
-                    new TransitionRule(0, 'a', BaseSymbol, "AA", 0),
-                    new TransitionRule(0, 'a', 'A', "AAA", 0),
-                    new TransitionRule(0, null, BaseSymbol, null, 0),
-                    new TransitionRule(0, 'b', 'A', null, 1),
-                    new TransitionRule(1, 'b', 'A', null, 1)
+                    new TransitionRule{ State = 0, InputSymbol = 'a', StackSymbol = BaseSymbol, ReplaceSymbols = "AA", ToState = 0 },
+                    new TransitionRule{ State = 0, InputSymbol = 'a', StackSymbol = 'A',
+                        ReplaceSymbols = "AAA",
+                        ToState = 0 },
+                    new TransitionRule{ State = 0, InputSymbol = null, StackSymbol = BaseSymbol,
+                        ReplaceSymbols = null,
+                        ToState = 0 },
+                    new TransitionRule{ State = 0, InputSymbol = 'b', StackSymbol = 'A',
+                        ReplaceSymbols = null,
+                        ToState = 1 },
+                    new TransitionRule{ State = 1, InputSymbol = 'b', StackSymbol = 'A',
+                        ReplaceSymbols = null,
+                        ToState = 1 }
                 };
 
             var automata = new DPDA(inputAlphabet, stackAlphabet, states, initialState, transitionRules, BaseSymbol);
