@@ -5,15 +5,15 @@ Implementação de um autômato com pilha em C# (.NET Core). Para executar este 
 ## Instruções
 
 1. Clone o repositório;
+
 2. _(Opcional)_ Execute os testes unitários:
-```
-$ dotnet test
-```
+
+    $ dotnet test
+
 3. Navegue até o projeto do atuômato e execute o programa passando o arquivo do autômato como parâmetro, e.g.:
-```
-$ cd src/PushdownAutomata
-$ dotnet run ../../examples/AnBn.json
-```
+
+    $ cd src/PushdownAutomata
+    $ dotnet run ../../examples/AnBn.json
 
 **OBS:** Podem ser passados vários arquivos de uma só vez.
 
@@ -28,13 +28,12 @@ Exemplo de saída:
 O arquivo de entrada para essa implementação é um arquivo JSON, contendo o autômato com pilha e as cadeias a serem testadas.
 
 ### Observações
+
 Exemplos de arquivos de entrada estão contidos na pasta `examples`.
 
 Para facilitar a inserção dos dados, foi criado um _[schema](docs/schema.json)_ para o arquivo, se for editar ou criar algum autômato personalizado, adicione a linha abaixo no objeto raiz, assim saberá se algum valor estiver errado ou faltando:
 
-```
-"$schema": "https://raw.githubusercontent.com/victor-borges/pushdown-automation/master/docs/schema.json"
-```
+    "$schema": "https://raw.githubusercontent.com/victor-borges/pushdown-automation/master/docs/schema.json"
 
 ### Estrutura do arquivo
 
