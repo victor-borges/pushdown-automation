@@ -15,6 +15,12 @@ $ cd src/PushdownAutomata
 $ dotnet run ../../examples/AnBn.json
 ```
 
+## Saída
+
+Exemplo de saída:
+
+![output_example](docs/output.jpg)
+
 ## Arquivo de entrada
 
 O arquivo de entrada para essa implementação é um arquivo JSON, contendo o autômato com pilha e as cadeias a serem testadas.
