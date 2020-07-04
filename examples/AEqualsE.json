@@ -1,0 +1,101 @@
+{
+  "$schema": "https://raw.githubusercontent.com/victor-borges/pushdown-automation/master/docs/schema.json",
+
+  "pushdown_automata": {
+    "name": "{x ∈ {a,e}* | |xₐ| = |xₑ|}",
+    "description": "Matches the following language: {x ∈ {a,e}* | |xₐ| = |xₑ|}",
+    "input_alphabet": [
+      null,
+      "a",
+      "e"
+    ],
+    "stack_alphabet": [
+      "A",
+      "E",
+      "β"
+    ],
+    "states": [
+      0
+    ],
+    "initial_state": 0,
+    "initial_stack_symbol": "β",
+    "transition_rules": [
+      {
+        "from_state": 0,
+        "to_state": 0,
+        "input": "a",
+        "stack": "β",
+        "replace": "βA"
+      },
+      {
+        "from_state": 0,
+        "to_state": 0,
+        "input": "e",
+        "stack": "β",
+        "replace": "βE"
+      },
+      {
+        "from_state": 0,
+        "to_state": 0,
+        "input": null,
+        "stack": "β",
+        "replace": null
+      },
+      {
+        "from_state": 0,
+        "to_state": 0,
+        "input": "a",
+        "stack": "A",
+        "replace": "AA"
+      },
+      {
+        "from_state": 0,
+        "to_state": 0,
+        "input": "e",
+        "stack": "A",
+        "replace": null
+      },
+      {
+        "from_state": 0,
+        "to_state": 0,
+        "input": "a",
+        "stack": "E",
+        "replace": null
+      },
+      {
+        "from_state": 0,
+        "to_state": 0,
+        "input": "e",
+        "stack": "E",
+        "replace": "EE"
+      }
+    ]
+  },
+  "input": [
+    null,
+    "",
+    " ",
+    "\n",
+    "ae",
+    "aaee",
+    "eeeaaa",
+    "eaeaeaaaaeeeaeae",
+    "ea",
+    "eeeaaaeeeaaaeaeaaeaeeeeeaeaaeeaaaa",
+    "eaeeeaaa",
+    "eeaeeaeeaaaa",
+    "aaeaaeaaeeee",
+    "a",
+    "e",
+    "eae",
+    "eae",
+    "aaaa",
+    "eeee",
+    "aaaaaaeeee",
+    "eaeeaaa",
+    "oirh",
+    "00124",
+    "aa12312eee",
+    "eaa asd"
+  ]
+}
