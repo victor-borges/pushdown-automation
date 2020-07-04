@@ -45,7 +45,7 @@ Nome | Tipo | Descrição
 `states` | `int[]` | Conjunto de possíveis estados do autômato.
 `initial_state` | `int` | Estado inicial do autômato. Deve estar contido no conjunto de de estados.
 `initial_stack_symbol` | `string` | Símbolo inicial da pilha. Deve estar contido no alfabeto da pilha.
-`transition_rules` | `object[]` | Conjunto de [regras de transição](#transition-rule).
+`transition_rules` | `object[]` | Conjunto de regras de transição.
 
 ##### `transition_rule`
 
