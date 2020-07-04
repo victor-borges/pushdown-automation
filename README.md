@@ -15,6 +15,8 @@ $ cd src/PushdownAutomata
 $ dotnet run ../../examples/AnBn.json
 ```
 
+**OBS:** Podem ser passados vários arquivos de uma só vez.
+
 ## Saída
 
 Exemplo de saída:
